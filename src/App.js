@@ -8,6 +8,7 @@ import {
   Pokedex,
   PokemonDetails,
 } from './components';
+// lembrar que pokemom esta na pokedex
 
 import {
   readFavoritePokemonIds,
