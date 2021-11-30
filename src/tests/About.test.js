@@ -1,8 +1,7 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-// import userEvent from '@testing-library/user-event';
-import About from '../components/About';
 import renderWithRouter from '../components/renderWithRouter';
+import About from '../components/About';
 
 test('renderiza a page about e mostra o título', () => {
   renderWithRouter(<About />);
