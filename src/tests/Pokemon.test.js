@@ -55,6 +55,14 @@ describe('Test Pokemon page', () => {
     userEvent.click(moreDetails);
     expect(history.entries[1].pathname).toEqual('/pokemons/4');
   });
+  it('deve mostrar a imagem da estrela nos pokemons favoritados', () => {
+    const isFavorite = true;
+    renderWithRouter(<Pokemon isFavorite={ isFavorite } pokemon={ pokemons[0] } />);
+    const pikachuImg = screen.getByRole('img',
+      { name: /Pikachu is marked as favorite/i });
+    expect(pikachuImg).toHaveAttribute('src', '/star-icon.svg');
+    expect(pikachuImg).toHaveAttribute('alt', 'Pikachu is marked as favorite');
+  });
 });
 
 // ajuda da Fernanda Andrade para conhecer o entries e pegar o pathname das mudanças.
