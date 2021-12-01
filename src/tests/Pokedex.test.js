@@ -40,7 +40,6 @@ describe('Test Pokedex page', () => {
   });
 
   it('deve conter apenas os pokemons do type do button', () => {
-    const allButtons = screen.getAllByTestId('pokemon-type-button');
     const buttonAll = screen.getByRole('button', { name: /all/i });
     expect(buttonAll).toBeInTheDocument();
     userEvent.click(buttonAll);

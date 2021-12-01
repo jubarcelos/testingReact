@@ -24,3 +24,5 @@ describe('Test Favorite page', () => {
     expect(pokemon).toBeDefined();
   });
 });
+
+// testar fazer o teste direto da <FavoritesPokemon recebendo data como prop.
