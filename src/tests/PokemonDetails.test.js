@@ -3,14 +3,12 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
-import pokemons from '../data';
 
 describe('Test PokemonDetails from App', () => {
-  it('deve mostrar o nome e detalhes do pokemom e não ter o button details', () => {
+  it('deve mostrar subtitle Summary, detalhes do pokemom e sem button details', () => {
     renderWithRouter(<App />);
     const moreDetails = screen.getByRole('link', { name: /More details/i });
     userEvent.click(moreDetails);
-
     const pikachuName = screen.getByRole('heading',
       { level: 2, name: 'Pikachu Details' });
     expect(pikachuName).toBeInTheDocument();
@@ -19,7 +17,11 @@ describe('Test PokemonDetails from App', () => {
     expect(subTitle).toBeInTheDocument();
     const paragraph = screen.getByText(/This intelligent Pokémon roasts hard berries/i);
     expect(paragraph).toBeInTheDocument();
-
+  });
+  it('deve mostrar h2 Game Locations of Pikachu e os mapas do pokemom', () => {
+    renderWithRouter(<App />);
+    const moreDetails = screen.getByRole('link', { name: /More details/i });
+    userEvent.click(moreDetails);
     const mapTitle = screen.getByRole('heading',
       { level: 2, name: 'Game Locations of Pikachu' });
     expect(mapTitle).toBeInTheDocument();
@@ -32,7 +34,11 @@ describe('Test PokemonDetails from App', () => {
     expect(localImg[0]).toHaveAttribute('alt', 'Pikachu location');
     expect(localImg[1]).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/b/bd/Kanto_Celadon_City_Map.png');
     expect(localImg[1]).toHaveAttribute('alt', 'Pikachu location');
-
+  });
+  it('deve mostrar se favorita e desfavorita o pokemom', () => {
+    renderWithRouter(<App />);
+    const moreDetails = screen.getByRole('link', { name: /More details/i });
+    userEvent.click(moreDetails);
     const favoritado = screen.getByRole('checkbox', { name: /pokémon favoritado?/i });
     userEvent.click(favoritado);
     const Img = screen.getByRole('img', { name: /Pikachu is marked as favorit/i });
