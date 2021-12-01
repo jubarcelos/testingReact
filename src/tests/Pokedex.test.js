@@ -27,6 +27,12 @@ describe('Test Pokedex page', () => {
     expect(screen.queryByText(pokemons[1].name)).not.toBeInTheDocument();
   });
 
+  test('botões de filtro devem ter o nome do type do pokemon e aparecem na tela', () => {
+    pokemons.forEach((pokemon) => {
+      expect(screen.getByRole('button', { name: pokemon.type })).toBeInTheDocument();
+    });
+  });
+
   it('deve ter 1 button para cada type de pokemon além do All e Próximo pokemon', () => {
     const SETE = 7;
     const btnTypeQuantity = screen.queryAllByTestId(/pokemon-type-button/i).length;
@@ -39,6 +45,7 @@ describe('Test Pokedex page', () => {
     expect(buttonAll).toBeInTheDocument();
     userEvent.click(buttonAll);
     expect(screen.getByText(/pikachu/i)).toBeInTheDocument();
+    expect(buttonAll).toBeVisible();
 
     const buttonElectric = screen.getByRole('button', { name: /electric/i });
     expect(buttonElectric).toBeInTheDocument();
