@@ -83,3 +83,4 @@ describe('Test Pokedex page', () => {
     expect(screen.getByText(/dragonair/i)).toBeInTheDocument();
   });
 });
+// tentar pela pokedex direto, passando por props
