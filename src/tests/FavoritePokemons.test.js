@@ -1,10 +1,9 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-// import userEvent from '@testing-library/user-event';
+import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import FavoritePokemons from '../components/FavoritePokemons';
 import App from '../App';
-import userEvent from '@testing-library/user-event';
 
 describe('Test Favorite page', () => {
   it('deve checar se aparece a mensagem quando não tem pokemon', () => {
@@ -12,7 +11,7 @@ describe('Test Favorite page', () => {
     const favoritePokemons = screen.getByText(/No favorite pokemon found/i);
     expect(favoritePokemons).toBeInTheDocument();
   });
-  it('deve exibir todos os cards de pokemons', () => {
+  it('deve exibir todos os cards de pokemons favoritados', () => {
     renderWithRouter(<App />);
     const moreDetails = screen.getByRole('link', { name: /More details/i });
     expect(moreDetails).toBeInTheDocument();
